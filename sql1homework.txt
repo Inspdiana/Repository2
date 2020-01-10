@@ -1,0 +1,104 @@
+1
+Create Table Teachers(
+IDTeacher int primary key,
+Name varchar(255),
+);
+
+
+Create Table Students(
+IDStudent int primary key,
+NameStudent varchar(255),
+IDSubject char,
+Estimation char,
+);
+
+
+Create Table Subjects(
+IDSubject int primary key,
+NameSubject varchar(255),
+IDTeacher varchar(255),
+);
+
+2
+IDTeacher     NameTeacher
+100           Иванов
+200           Сердюков
+300           Алексейчук
+400           Музичук
+500           Коломиец
+
+
+IDStudent  NameStudent IDSubject Esmation Age
+1          Волков      31        3        18
+2          Николаев    32        null     18
+3          Корал       45        5        20
+4          Разумовская 56        null     21
+5          Фролич      11        4        20
+
+IDSubject  NameSubject   IDTeacher
+31         Chemistry     200
+32         Math          100
+45         Biology       400
+56         Reading       300
+11         Writing       500
+
+
+3
+SELECT*
+FROM Teachers
+
+
+SELECT*
+FROM Students
+
+
+SELECT*
+FROM Subjects
+
+
+4
+Insert into Students IDStudent(6,7,8,9,10,11,12);
+Insert into Students NameStudent("Сливич","Ярош","Мирош","Падун","Печенюк","Романюк","Омаров");
+Insert into Students IDSubject(32,45,32,32,56,45,11);
+Insert into Students Estimation(5,"null",5,4,"null",2,5);
+Insert into Students Age(20,17,17,18,21,20,16);
+
+
+5
+SELECT NameStudent
+FROM Students
+
+6
+DELETE Estimation
+FROM Students
+WHERE Estimation is null
+
+7
+SELECT NameStudent
+FROM Students
+WHERE Estimation is null
+
+8
+SELECT *
+FROM Students
+WHERE Age>18
+
+9
+SELECT *
+FROM Students
+ORDER BY Age ASC
+
+10
+SELECT *
+FROM Students
+ORDER BY Age DESC
+
+11
+SELECT*
+FROM Students
+WHERE Estimation is not null
+ORDER BY Age DESC    IN
+(SELECT NameStudent
+FROM Students
+WHERE Age=20 AND Age=18
+ORDER BY Name ASC)
